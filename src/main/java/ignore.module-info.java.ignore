@@ -1,0 +1,20 @@
+module hr.tvz.cyberpunkunfolds {
+    requires javafx.controls;
+    requires javafx.fxml;
+
+    requires java.rmi;
+    requires java.naming;
+    requires jdk.naming.rmi;
+    requires java.xml;
+
+    requires org.slf4j;
+    requires ch.qos.logback.classic;
+    requires io.github.classgraph;
+
+    opens hr.tvz.cyberpunkunfolds.ui.controller to javafx.fxml;
+
+    exports hr.tvz.cyberpunkunfolds;
+    exports hr.tvz.cyberpunkunfolds.engine;
+    exports hr.tvz.cyberpunkunfolds.model;
+    exports hr.tvz.cyberpunkunfolds.rmi.protocol;
+}

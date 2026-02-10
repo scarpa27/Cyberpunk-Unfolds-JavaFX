@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{TITLE}}</title>
+
+    <style>
+{{CSS}}
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="titleRow">
+        <div class="title">{{HEADER_TITLE}}</div>
+        <div class="meta">
+            Package: <span class="muted">{{BASE_PACKAGE}}</span>
+            • Classes: <span class="muted">{{CLASS_COUNT}}</span>
+            • Generated: <span class="muted">{{GENERATED_AT}}</span>
+        </div>
+    </div>
+
+{{TOOLBAR}}
+</header>
+
+<div class="layout">
+{{SIDEBAR}}
+{{CONTENT}}
+</div>
+
+<script>
+{{JS}}
+</script>
+</body>
+</html>

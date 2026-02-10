@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<world name="Neo-Zagreb">
+  <nodes>
+    <node id="SLUMS" title="Slums" unlocked="true">
+      <description>You stand in the rain-slicked alleys of the Slums, neon lights flickering above. This is where all infiltrations begin. The Night Market lies ahead, protected by encrypted terminals.</description>
+    </node>
+    <node id="MARKET" title="Night Market" unlocked="false">
+      <description>The Night Market buzzes with illicit data trades and black-market tech. Street vendors hawk stolen credentials while holographic ads flicker overhead. A terminal blocks the path to the Security Gate.</description>
+    </node>
+    <node id="GATE" title="Security Gate" unlocked="false">
+      <description>Massive corporate firewalls manifest as towering gates of light. Security drones patrol the perimeter. Beyond lies the DATACORE—the ultimate prize. But first, you must crack the gate's encryption.</description>
+    </node>
+    <node id="DATACORE" title="Data Core" unlocked="false">
+      <description>The DATACORE pulses with raw information—corporate secrets, financial records, backdoors to the entire network. One final puzzle stands between you and total access. The alarm is screaming. Make it count.</description>
+    </node>
+  </nodes>
+
+  <edges>
+    <edge a="SLUMS" b="MARKET"/>
+    <edge a="MARKET" b="GATE"/>
+    <edge a="GATE" b="DATACORE"/>
+  </edges>
+
+  <puzzles>
+    <puzzle id="P1" node="SLUMS" type="CODE" solution="1986">
+      <prompt>This area is not safe. You need to quickly get out of here. There is a beaten down bicycle nearby, but it has a 4-digit lockpad.</prompt>
+      <clue>The bicycle is tied to a fence. The house has a large Dinamo logo painted on the wall. The owner must be a fan.</clue>
+      <clue>The code is currently set to 0875, maybe the owner scrambled it poorely.</clue>
+      <clue>There is a sticker on the bicycle. It has a bulldog head with the letters BBB underneath. Could this mean something?</clue>
+    </puzzle>
+    <puzzle id="P2" node="MARKET" type="CODE" solution="0420">
+      <prompt>The street vendor's terminal flickers with a cracked login screen. Enter the access code.</prompt>
+      <clue>You spot graffiti on the wall: "Remember 4/20"</clue>
+      <clue>The terminal has worn keys: 0, 2, 4. Someone uses this code frequently.</clue>
+      <clue>It's a 4-digit code. The pattern suggests a date format: MMDD</clue>
+    </puzzle>
+    <puzzle id="P3" node="GATE" type="CODE" solution="1337">
+      <prompt>The Security Gate demands authentication. A numeric keypad awaits your input.</prompt>
+      <clue>Scrawled on a nearby datapad: "Elite access only"</clue>
+      <clue>The word "LEET" is spray-painted on the gate. Hacker slang from the old net.</clue>
+      <clue>1337 = "LEET" in leetspeak. Classic hacker code.</clue>
+    </puzzle>
+    <puzzle id="P4" node="DATACORE" type="CODE" solution="9001">
+      <prompt>The DATACORE's final lock pulses red. One last code stands between you and victory.</prompt>
+      <clue>A meme flashes on the screen: "IT'S OVER 9000!"</clue>
+      <clue>The number 9000 appears, but it's crossed out. Someone wrote "+1" next to it.</clue>
+      <clue>9000 + 1 = 9001. The correct code.</clue>
+    </puzzle>
+  </puzzles>
+</world>

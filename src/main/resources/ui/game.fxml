@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="hr.tvz.cyberpunkunfolds.ui.controller.GameController">
+  <BorderPane styleClass="root-pane">
+    <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+
+    <top>
+      <VBox spacing="8">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+          <Button text="Back" onAction="#onBack" styleClass="btn-back"/>
+          <Label fx:id="localPlayerLabel" text="You: Player-1" styleClass="local-player"/>
+          <Region HBox.hgrow="ALWAYS"/>
+          <Label fx:id="currentPlayerLabel" text="Turn: Player1" styleClass="current-player"/>
+          <Label fx:id="interactionsLabel" text="Interactions: 2/2" styleClass="interactions"/>
+          <Label fx:id="alarmLabel" text="Alarm: 0/12" styleClass="alarm"/>
+        </HBox>
+        <Separator/>
+      </VBox>
+    </top>
+
+    <center>
+    <SplitPane dividerPositions="0.28, 0.72">
+        <!-- LEFT: Map & Actions -->
+        <VBox spacing="10" styleClass="panel-left">
+          <Label text="NETWORK MAP" styleClass="panel-title"/>
+          <ListView fx:id="nodesList" styleClass="nodes-list" VBox.vgrow="ALWAYS"/>
+
+          <VBox spacing="6">
+            <Label text="ACTIONS" styleClass="section-label"/>
+            <HBox spacing="6">
+              <Button text="Move" onAction="#onMove" styleClass="btn-action" HBox.hgrow="ALWAYS"/>
+              <Button text="Inspect" onAction="#onInspect" styleClass="btn-action" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox spacing="6">
+              <Button text="End Turn" onAction="#onEndTurn" styleClass="btn-end-turn" HBox.hgrow="ALWAYS"/>
+            </HBox>
+          </VBox>
+        </VBox>
+
+        <!-- CENTER: Node Info & Puzzle -->
+        <VBox spacing="10" styleClass="panel-center">
+          <Label text="CURRENT LOCATION" styleClass="panel-title"/>
+          <VBox spacing="6" styleClass="node-info">
+            <Label fx:id="nodeTitle" text="Slums" styleClass="node-title"/>
+            <TextArea fx:id="nodeDescription" editable="false" wrapText="true"
+                      text="You stand in the rain-slicked alleys..."
+                      styleClass="node-description" prefRowCount="3"/>
+          </VBox>
+
+          <Separator/>
+
+          <Label text="PUZZLE" styleClass="panel-title"/>
+          <VBox spacing="6" styleClass="puzzle-info">
+            <Label fx:id="puzzleStatus" text="No puzzle here" styleClass="puzzle-status"/>
+          <TextArea fx:id="puzzlePrompt" editable="false" wrapText="true"
+                    text="---" styleClass="puzzle-prompt" prefRowCount="3"/>
+
+            <Label text="Revealed Clues:" styleClass="section-label"/>
+            <ListView fx:id="cluesList" styleClass="clues-list" prefHeight="120"/>
+
+            <Label text="Answer:" styleClass="section-label"/>
+            <HBox spacing="6">
+              <TextField fx:id="puzzleAnswerInput" promptText="Enter answer..."
+                         onAction="#onSubmitPuzzle" HBox.hgrow="ALWAYS"/>
+              <Button fx:id="puzzleSubmitButton" text="Submit" onAction="#onSubmitPuzzle"/>
+            </HBox>
+          </VBox>
+        </VBox>
+
+        <!-- RIGHT: Event Log -->
+        <VBox spacing="10" styleClass="panel-right">
+          <Label text="EVENT LOG" styleClass="panel-title"/>
+          <TextArea fx:id="logArea" editable="false" wrapText="true"
+                    styleClass="log-area" VBox.vgrow="ALWAYS"/>
+          <Separator/>
+          <Label text="CHAT" styleClass="panel-title"/>
+          <TextArea fx:id="chatArea" editable="false" wrapText="true"
+                    styleClass="chat-area" prefRowCount="6"/>
+          <HBox spacing="6">
+            <TextField fx:id="chatInput" promptText="Message..." onAction="#onSendChat" HBox.hgrow="ALWAYS"/>
+            <Button text="Send" onAction="#onSendChat"/>
+          </HBox>
+        </VBox>
+      </SplitPane>
+    </center>
+
+    <bottom>
+      <VBox spacing="8">
+        <Separator/>
+        <HBox spacing="10">
+          <Button text="Save" onAction="#onSave" styleClass="btn-util"/>
+          <Button text="Load" onAction="#onLoad" styleClass="btn-util"/>
+          <Button text="Export XML" onAction="#onExportMoves" styleClass="btn-util"/>
+          <Region HBox.hgrow="ALWAYS"/>
+        </HBox>
+      </VBox>
+    </bottom>
+  </BorderPane>
+
+  <!-- Game Over Overlay -->
+  <StackPane fx:id="gameOverOverlay" visible="false" managed="false"
+             style="-fx-background-color: rgba(0, 0, 0, 0.85);">
+    <VBox alignment="CENTER" spacing="30" style="-fx-padding: 40;">
+      <Label fx:id="gameOverTitle" text="GAME OVER"
+             style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: #ff0000;"/>
+      <Label fx:id="gameOverMessage" text="Message"
+             style="-fx-font-size: 24px; -fx-text-fill: white; -fx-wrap-text: true; -fx-max-width: 600px; -fx-text-alignment: center;"/>
+      <Button text="Back to Menu" onAction="#onBack"
+              style="-fx-font-size: 18px; -fx-padding: 15 40; -fx-background-color: #00ff41; -fx-text-fill: black; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;"/>
+    </VBox>
+  </StackPane>
+</StackPane>

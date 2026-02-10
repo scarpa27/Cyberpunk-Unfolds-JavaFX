@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hr.tvz.cyberpunkunfolds.ui.controller.MainMenuController">
+  <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+  <top>
+    <Label text="Cyberpunk Unfolds" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+  </top>
+
+  <center>
+    <VBox spacing="10" prefWidth="420">
+      <Label text="Choose mode:" />
+      <Button text="Single Player" onAction="#onSinglePlayer" />
+      <Button text="Multiplayer" onAction="#onLobby" />
+      <Separator/>
+      <Button text="Replay (XML)" onAction="#onReplay" />
+      <Button fx:id="generateDocsButton" text="Generate Docs (Reflection)" onAction="#onGenerateDocs" />
+      <Separator/>
+      <Button text="Exit" onAction="#onExit" />
+    </VBox>
+  </center>
+
+  <bottom>
+    <Hyperlink fx:id="statusLabel" text="Ready." />
+  </bottom>
+</BorderPane>
